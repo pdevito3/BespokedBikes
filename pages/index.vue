@@ -1,6 +1,6 @@
 <template>
-  <div class="text-purple-500 antialiased">
-    <PlusCircle class="h-10 w-10 stroke-current" />
+  <div class="">
+    Home
   </div>
 </template>
 

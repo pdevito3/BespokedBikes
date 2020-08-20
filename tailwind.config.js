@@ -52,10 +52,15 @@ module.exports = {
   variants: {
     backgroundColor: ['responsive', 'hover', 'focus', 'odd'],
     boxShadow: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
   },
   plugins: [
     require('@tailwindcss/ui')({
       layout: 'sidebar',
     })
-  ]
+  ],
+  experimental: {
+    defaultLineHeights: true,
+    extendedFontSizeScale: true,
+  },
 }
