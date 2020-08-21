@@ -100,6 +100,8 @@
         </div>
       </div>
     </div>
+
+    <ModifySalesperson :open="openModifyModal"/>
   </div>
 </template>
 
@@ -115,7 +117,8 @@ export default {
   },
   data() {
     return {
-      page: 1
+      page: 1,
+      openModifyModal: false
     };
   },
   created() {

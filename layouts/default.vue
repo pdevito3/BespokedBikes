@@ -11,7 +11,7 @@
         
         <p class="pr-3 text-xl text-gray-800 font-bold uppercase">Bespoked Bikes</p>
       </div>
-      <!-- <portal-target name="modals" multiple></portal-target> -->
+      <portal-target name="modals" multiple></portal-target>
       <main
         class="flex-1 relative z-0 overflow-y-auto py-6 focus:outline-none"
         tabindex="0"
