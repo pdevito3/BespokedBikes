@@ -16,6 +16,7 @@
     "@tailwindcss/ui": "^0.5.0",
     "heroicons": "^0.3.7",
     "moment": "^2.27.0",
+    "numeral": "^2.0.6",
     "nuxt": "^2.14.0",
     "vue-svg-loader": "^0.16.0"
   },
