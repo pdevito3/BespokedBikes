@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @keydown.escape="closeModal(false)">
     <div class="pb-5 border-b border-gray-200 space-y-3 sm:flex sm:items-center sm:justify-between sm:space-x-4 sm:space-y-0">
       <h2 class="text-lg leading-6 font-medium text-gray-900">
         Salespeople
@@ -68,7 +68,7 @@
                     {{salesperson.manager}}
                   </td>
                   <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    <button @click="openModifyModal=!openModifyModal" class="text-indigo-600 hover:text-indigo-900">Edit</button>
                   </td>
                 </tr>
 
@@ -101,7 +101,7 @@
       </div>
     </div>
 
-    <ModifySalesperson :open="openModifyModal"/>
+    <ModifySalesperson :open="openModifyModal" @closeModal="closeModal" />
   </div>
 </template>
 
@@ -159,6 +159,9 @@ export default {
       }
 
       return this.GetFormattedDate(termDate)
+    },
+    closeModal() {
+      this.openModifyModal = false;
     }
   }
 }
