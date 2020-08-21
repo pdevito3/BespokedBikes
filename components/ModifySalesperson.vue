@@ -163,6 +163,7 @@ export default {
   methods: {
     ...mapActions({ 
       updateSalesperson: 'salespersons/updateSalesperson',
+      addSalesperson: 'salespersons/addSalesperson',
     }),
     closeModal() {
       this.$emit("closeModal");

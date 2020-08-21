@@ -6,7 +6,7 @@
       </h2>
       <div>
         <span class="shadow-sm rounded-md">
-          <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
+          <button @click="addSalesPerson()" type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
             Add new salesperson
           </button>
         </span>
@@ -169,10 +169,17 @@ export default {
       this.openModifyModal = false;
     },
     editSalesPerson(salesperson){
+      this.formAction = "edit";
       this.openModifyModal = true;
       this.editable = Object.assign({}, salesperson);
       //this.setEditableSalesperson(salesperson);
-    }
+    },
+    addSalesPerson(){
+      this.formAction = "add";
+      this.openModifyModal = true;
+      this.editable = Object.assign({}, []);
+      //this.setEditableSalesperson(salesperson);
+    },
   }
 }
 </script>
