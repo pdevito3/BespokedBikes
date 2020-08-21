@@ -31,7 +31,7 @@ export const getters = {}
 export const actions = {
   getProducts({commit}, page ) {
       //axios.get(`http://localhost:5000/api/products/?filters=acquired==false, hidden==false`)
-      this.$axios.get(`http://localhost:5000/api/products/?pagesize=12&pageNumber=${page}`)
+      this.$axios.get(`http://localhost:5000/api/products/?pagesize=8&pageNumber=${page}`)
       .then(res => {
         commit('UPDATE_PRODUCTS', res.data);
         return res.data;

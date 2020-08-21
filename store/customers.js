@@ -6,8 +6,7 @@
 
 export const state = {
   customers: [],
-  editableCustomer: [],
-  addCustomersModalOpen: false
+  addCustomersModalOpen: false,
 }
 
 //update state synchronously 
@@ -29,9 +28,9 @@ export const getters = {}
 
 //asynchronously wrap business logic around mutations. 
 export const actions = {
-  getCustomers({commit}) {
+  getCustomers({commit}, page ) {
       //axios.get(`http://localhost:5000/api/customers/?filters=acquired==false, hidden==false`)
-      this.$axios.get(`http://localhost:5000/api/customers/?pagesize=50`)
+      this.$axios.get(`http://localhost:5000/api/customers/?pagesize=8&pageNumber=${page}`)
       .then(res => {
         commit('UPDATE_CUSTOMERS', res.data);
         return res.data;
