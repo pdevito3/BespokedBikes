@@ -39,18 +39,18 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                      <input id="first_name" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                      <input v-model="salesperson.firstName" id="first_name" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                     </div>
                   </div>
                 </div>
 
-                <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
                   <label for="last_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
                     Last name
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                      <input id="last_name" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                      <input v-model="salesperson.lastName" id="last_name" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                     </div>
                   </div>
                 </div>
@@ -61,18 +61,20 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                      <input id="address1" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                      <input v-model="salesperson.address1" id="address1" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                     </div>
                   </div>
                 </div>
                 
                 <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-                  <label for="address2" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-                    Address2
-                  </label>
+                  <div class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+                    <label for="address2" class="sr-only">
+                      Address2
+                    </label>
+                  </div>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                      <input id="address2" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                      <input v-model="salesperson.address2" id="address2" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                     </div>
                   </div>
                 </div>
@@ -83,7 +85,7 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                      <input id="city" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                      <input v-model="salesperson.city" id="city" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                     </div>
                   </div>
                 </div>
@@ -94,7 +96,7 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                      <input id="state" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                      <input v-model="salesperson.state" id="state" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                     </div>
                   </div>
                 </div>
@@ -105,7 +107,7 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                      <input id="zip" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                      <input v-model="salesperson.postalCode" id="zip" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                     </div>
                   </div>
                 </div>
@@ -118,16 +120,22 @@
               </label>
               <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                  <input id="phone_number" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                  <input v-model="salesperson.phoneNumber" id="phone_number" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                 </div>
               </div>
             </div>
 
           </div>
-          <div class="mt-5 sm:mt-6">
+          <div class="mt-5 sm:mt-6 space-y-2">
             <span class="flex w-full rounded-md shadow-sm">
-              <button @click="open = false;" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+              <button @click="submit(salesperson)" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                 Submit
+              </button>
+            </span>
+            
+            <span class="flex w-full rounded-md shadow-sm">
+              <button @click="closeModal()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-white text-base leading-6 font-medium text-gray-500 shadow-sm hover:bg-gray-100 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                Cancel
               </button>
             </span>
           </div>
@@ -138,16 +146,30 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
-  props: ['open'],
+  props: ['open','formAction', 'salesperson'],
   data() {
     return {
-      // open: true
     };
   },  
+  computed: {
+    // use object spread operator for mapstate with vuex so we can use locally computed properties
+    // ...mapState({
+    //   editableSalesperson: state => state.salespersons.editableSalesperson,
+    // }),
+  },
   methods: {
+    ...mapActions({ 
+      updateSalesperson: 'salespersons/updateSalesperson',
+    }),
     closeModal() {
       this.$emit("closeModal");
+    },
+    submit() {
+      this.$emit("closeModal");
+      this.updateSalesperson(this.salesperson);
     },
   }
 }

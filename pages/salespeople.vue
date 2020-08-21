@@ -68,7 +68,7 @@
                     {{salesperson.manager}}
                   </td>
                   <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                    <button @click="openModifyModal=!openModifyModal" class="text-indigo-600 hover:text-indigo-900">Edit</button>
+                    <button @click="editSalesPerson(salesperson)" class="text-indigo-600 hover:text-indigo-900">Edit</button>
                   </td>
                 </tr>
 
@@ -101,7 +101,7 @@
       </div>
     </div>
 
-    <ModifySalesperson :open="openModifyModal" @closeModal="closeModal" />
+    <ModifySalesperson :open="openModifyModal" :formAction="formAction" :salesperson.sync="editable" @closeModal="closeModal" />
   </div>
 </template>
 
@@ -118,7 +118,9 @@ export default {
   data() {
     return {
       page: 1,
-      openModifyModal: false
+      openModifyModal: false,
+      formAction: "edit",
+      editable: []
     };
   },
   created() {
@@ -133,6 +135,7 @@ export default {
   methods: {
     ...mapActions({ 
       getSalespersons: 'salespersons/getSalespersons',
+      setEditableSalesperson: 'salespersons/setEditableSalesperson'
     }),
     centsToDollars(cents){
       return numeral(cents/100).format('$0,0.00');
@@ -161,7 +164,13 @@ export default {
       return this.GetFormattedDate(termDate)
     },
     closeModal() {
+      this.editable = [];
       this.openModifyModal = false;
+    },
+    editSalesPerson(salesperson){
+      this.openModifyModal = true;
+      this.editable = Object.assign({}, salesperson);
+      //this.setEditableSalesperson(salesperson);
     }
   }
 }

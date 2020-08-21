@@ -6,6 +6,7 @@
 
 export const state = {
   salespersons: [],
+  editableSalesperson: [],
   addSalespersonsModalOpen: false,
 }
 
@@ -36,22 +37,30 @@ export const actions = {
         return res.data;
       });
   },
+  getSalesperson({commit}, id ) {
+      //axios.get(`http://localhost:5000/api/salespersons/?filters=acquired==false, hidden==false`)
+      this.$axios.get(`http://localhost:5000/api/salespersons/${id}`)
+      .then(res => {
+        return res.data;
+      });
+  },
   toggleSalespersonModal({ commit }){
     commit('TOGGLE_ADDSALESPERSONMODAL')
   },
   setEditableSalesperson({ commit }, editableSalesperson) {
     commit('SET_EDITABLESALESPERSON', editableSalesperson)
   },
-  addSalespersonToList({ commit, dispatch }, salesperson) {
-      this.$axios.post(
-        `http://localhost:5000/api/salespersons/`,
-        JSON.stringify(itemToAdd),
+  updateSalesperson({ commit, dispatch }, salesperson) {
+      this.$axios.put(
+        `http://localhost:5000/api/salespersons/${salesperson.salespersonId}`,
+        JSON.stringify(salesperson),
         {
           headers: {
             'Content-Type': 'application/json'
           }
         }).then(res => {
-          dispatch("getSalespersons");
+          dispatch("getSalespersons", 1);
+          //dispatch("getSalesperson",salesperson.salespersonId);
         });
   }
 }
