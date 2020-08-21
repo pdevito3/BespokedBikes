@@ -135,7 +135,8 @@ export default {
   methods: {
     ...mapActions({ 
       getSalespersons: 'salespersons/getSalespersons',
-      setEditableSalesperson: 'salespersons/setEditableSalesperson'
+      setEditableSalesperson: 'salespersons/setEditableSalesperson',
+      updatePage: 'salespersons/updatePage'
     }),
     centsToDollars(cents){
       return numeral(cents/100).format('$0,0.00');
@@ -147,12 +148,12 @@ export default {
       return moment(dateVal).format("MM/DD/YYYY")
     },
     nextPage(){
-      this.page ++;
-      this.getSalespersons(this.page);
+      this.updatePage(this.page + 1)
+        this.getSalespersons(this.page);
     },
     previousPage(){
       if(this.page > 1){
-        this.page--;
+        this.updatePage(this.page - 1)
         this.getSalespersons(this.page);
       }
     },

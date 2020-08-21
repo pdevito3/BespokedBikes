@@ -168,8 +168,12 @@ export default {
       this.$emit("closeModal");
     },
     submit() {
+      if(this.formAction == "edit")
+        this.updateSalesperson(this.salesperson);
+      if(this.formAction == "add")
+        this.addSalesperson(this.salesperson);
+      
       this.$emit("closeModal");
-      this.updateSalesperson(this.salesperson);
     },
   }
 }
